@@ -22,7 +22,7 @@ Objetivo simples de servir como exemplo prático de integração entre **back-en
 ---
 
 ## 📂 Estrutura do Projeto
-
+```
 crud-usuarios/
  ├── src/main/java/
  │    ├── model/           # Entidade Usuario
@@ -39,7 +39,7 @@ crud-usuarios/
  │
  ├── pom.xml               # Configuração do Maven (dependências)
  └── README.md             # Documentação
-
+```
 ---
 
 ## 🗄️ Banco de Dados
@@ -50,27 +50,32 @@ Crie um banco de dados e configure suas credenciais no arquivo:
 📌 `src/main/resources/META-INF/persistence.xml`
 
 Exemplo:
-<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/crud_javaee"/>
+```
+<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/crud-javaee"/>
 <property name="javax.persistence.jdbc.user" value="postgres"/>
 <property name="javax.persistence.jdbc.password" value="postdba"/>
 <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+```
 
 ---
 
 ## ⚙️ Como Executar o Projeto
 
 1. **Clonar o repositório**
+   ```
    bash
    $ git clone https://github.com/Matheus-Coltro/crud-javaee.git
    $ cd crud-javaee/crud-usuarios
+   ```
 
-2. **Compilar e empacotar com Maven**
+3. **Compilar e empacotar com Maven**
+   ```
    cmd
    mvn clean package
-
+   ```
    Isso irá gerar o arquivo `.war` em `target/crud-usuarios.war`.
 
-3. **Deploy no servidor de aplicações**  
+5. **Deploy no servidor de aplicações**  
    - Copie o `.war` para a pasta .\standalone\deployments do **WildFly/JBoss**.
    - Inicie o servidor e acesse no navegador:
    `http://localhost:8080/crud-usuarios`
