@@ -1,6 +1,5 @@
-# crud-javaee
-Web Java EE application
 # CRUD de Usuários - Java EE + Hibernate + PrimeFaces
+Web Java EE Application
 
 Projeto **CRUD** de usuários, desenvolvido com **Java EE**, **Hibernate (JPA)**, **PrimeFaces** e **PostgreSQL**.
 
@@ -10,14 +9,14 @@ Objetivo simples de servir como exemplo prático de integração entre **back-en
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Java EE (Jakarta Faces)**
+- **Java EE 8**
 - **Hibernate / JPA (Java Persistence API)**
 - **EJB (Enterprise JavaBeans)** 
-- **PrimeFaces 8.0**
+- **JSF (JavaServer Faces)**
+- **PrimeFaces**
 - **PostgreSQL**
 - **Maven**
 - **WildFly / JBoss** (deploy)
-- **JSF (JavaServer Faces)**
 
 ---
 
@@ -44,7 +43,7 @@ crud-usuarios/
 
 ## 🗄️ Banco de Dados
 
-O projeto utiliza **PostgreSQL**.  
+O projeto utiliza **PostgreSQL**.
 Crie um banco de dados e configure suas credenciais no arquivo:
 
 📌 `src/main/resources/META-INF/persistence.xml`
@@ -56,6 +55,8 @@ Exemplo:
 <property name="javax.persistence.jdbc.password" value="postdba"/>
 <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 ```
+
+Certifique-se de baixar o driver **JDBC**(Java Database Connectivity) para permitir a interação entre a aplicação e o banco. Insira-o na pasta ```.\standalone\deployments``` do WildFly ou use-o como module manualmente.
 
 ---
 

@@ -16,11 +16,18 @@ public class UsuarioBean implements Serializable {
 
     private Usuario usuario = new Usuario();
     private List<Usuario> usuarios;
+    private Usuario usuarioEdit;
 
     public void salvar() {
         usuarioDAO.salvar(usuario);
-        usuario = new Usuario(); // Limpa o formulário
-        usuarios = null; // Força a recarga da lista
+        usuario = new Usuario();
+        usuarios = null;
+    }
+
+    public void atualizar() {
+        usuarioDAO.atualizar(usuarioEdit);
+        usuarioEdit = null;
+        usuarios = null;
     }
 
     public List<Usuario> getUsuarios() {
@@ -30,11 +37,24 @@ public class UsuarioBean implements Serializable {
         return usuarios;
     }
 
+    public void excluir(Usuario usuario) {
+        usuarioDAO.excluir(usuario);
+        usuarios = null;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
+    public Usuario getUsuarioEdit() {
+        return usuarioEdit;
+    }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public void prepararEdit(Usuario usuario) {
+        this.usuarioEdit = usuario;
     }
 }

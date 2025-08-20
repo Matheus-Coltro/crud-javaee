@@ -4,7 +4,7 @@
     <title>Cadastro de Usuários</title>
 </h:head>
 <h:body>
-    <h:form>
+    <h:form id="formNovo">
         <p:panel header="Novo Usuário">
             <p:messages id="messages" showDetail="true" autoUpdate="true" />
             <p:inputText value="#{usuarioBean.usuario.nome}" placeholder="Nome" label="Nome" required="true" />
@@ -14,18 +14,39 @@
         </p:panel>
     </h:form>
 
-    <p:dataTable value="#{usuarioBean.usuarios}" var="u" id="tabela" style="margin-top:2em"
-        emptyMessage="Nenhum usuário cadastrado.">
-        <p:column headerText="ID">
-            <h:outputText value="#{u.id}" />
-        </p:column>
-        <p:column headerText="Nome">
-            <h:outputText value="#{u.nome}" />
-        </p:column>
-        <p:column headerText="Email">
-            <h:outputText value="#{u.email}" />
-        </p:column>
-    </p:dataTable>
+    <h:form id="formTabela">
+        <p:dataTable value="#{usuarioBean.usuarios}" var="u" id="tabela" style="margin-top:2em"
+            emptyMessage="Nenhum usuário cadastrado.">
+            <p:column headerText="ID">
+                <h:outputText value="#{u.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{u.nome}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{u.email}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton value="Editar" icon="pi pi-pencil" action="#{usuarioBean.prepararEdicao(u)}"
+                    update=":dialogEditar" oncomplete="PF('dlgEditar').show()" />
+                <p:commandButton value="Excluir" icon="pi pi-trash" action="#{usuarioBean.excluir(u)}"
+                    update="tabela messages" process="@this" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+    <p:dialog header="Editar Usuário" widgetVar="dlgEditar" modal="true" id="dialogEditar" resizable="false">
+        <h:form id="formEditar">
+            <p:messages id="editMessages" showDetail="true" autoUpdate="true" />
+            <p:inputText value="#{usuarioBean.usuarioEditando.nome}" placeholder="Nome" label="Nome" required="true" />
+            <p:inputText value="#{usuarioBean.usuarioEditando.email}" placeholder="Email" label="Email"
+                required="true" />
+            <p:password value="#{usuarioBean.usuarioEditando.senha}" placeholder="Senha" label="Senha"
+                required="true" />
+            <p:commandButton value="Atualizar" action="#{usuarioBean.atualizar}" update="tabela editMessages"
+                icon="pi pi-save" oncomplete="PF('dlgEditar').hide()" />
+        </h:form>
+    </p:dialog>
 </h:body>
 
 </html>
