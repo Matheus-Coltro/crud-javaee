@@ -1,0 +1,3 @@
+dao\UsuarioDAO.class
+model\Usuario.class
+bean\UsuarioBean.class
